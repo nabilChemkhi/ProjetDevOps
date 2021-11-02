@@ -81,28 +81,28 @@ public class TimesheetApplicationTests {
 	}
 	
 	
-	@Test(timeout = 5000)
-	public void getAllDepartementsNamesByEntrTest(){
-	List<String> lnoms=entrepSrevice.getAllDepartementsNamesByEntreprise(1);
+//	@Test(timeout = 5000)
+//	public void getAllDepartementsNamesByEntrTest(){
+//	List<String> lnoms=entrepSrevice.getAllDepartementsNamesByEntreprise(1);
+//	
+//	assertThat(lnoms).size().isGreaterThan(0);
+//	}
 	
-	assertThat(lnoms).size().isGreaterThan(0);
-	}
 	
 	
-	
-	@Test(timeout = 5000)
-	public void delteEntreTest(){
-		entrepSrevice.deleteEntrepriseById(1);
-		
-		assertNull(entrepSrevice.getEntrepriseById(1));
-	}
-	
-	@Test(timeout = 5000)
-	public void delteDepTest(){
-		entrepSrevice.deleteDepartementById(1);
-		
-		
-	}
+//	@Test(timeout = 5000)
+//	public void delteEntreTest(){
+//		entrepSrevice.deleteEntrepriseById(1);
+//		
+//		assertNull(entrepSrevice.getEntrepriseById(1));
+//	}
+//	
+//	@Test(timeout = 5000)
+//	public void delteDepTest(){
+//		entrepSrevice.deleteDepartementById(1);
+//		
+//		
+//	}
 	
 
 }
