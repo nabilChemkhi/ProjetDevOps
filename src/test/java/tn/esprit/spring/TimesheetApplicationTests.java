@@ -33,75 +33,76 @@ public class TimesheetApplicationTests {
 	@Autowired
 	IEntrepriseService entrepSrevice;
 
+	//load context
 	@Test
 	public void contextLoads() {
 	}
 	
 	/*********   TEST methods EntrepriseServices   *******/
 	
-//	@Test(timeout = 5000)
-//	public void ajoutEntrTest(){
-//	
-//		//test pour ajout entreprise
-//			Entreprise e=new Entreprise("telnet","Sfax");
-//			entrepSrevice.ajouterEntreprise(e);
-//			
-//			assertNotNull(entrepSrevice.ajouterEntreprise(e));
-//	}
+	@Test(timeout = 5000)
+	public void ajoutEntrTest(){
+	
+		//test pour ajout entreprise
+			Entreprise e=new Entreprise("telnet","Sfax");
+			entrepSrevice.ajouterEntreprise(e);
+			
+			assertNotNull(entrepSrevice.ajouterEntreprise(e));
+	}
 	
 	
-//	@Test(timeout = 5000)
-//	public void ajoutDepTest(){
-//	
-//		//test pour ajout Dep
-//			Departement d=new Departement("Informatique");
-//			entrepSrevice.ajouterDepartement(d);
-//			
-//			assertNotNull(entrepSrevice.ajouterDepartement(d));
-//	}
+	@Test(timeout = 5000)
+	public void ajoutDepTest(){
 	
-//	@Test(timeout = 5000)
-//	public void retriveEntrTest(){
-//	
-//		//test pour récuper  entreprise
-//	
-//		Entreprise e=entrepSrevice.getEntrepriseById(2);
-//			
-//			assertNotNull(e.getName());
-//			l.info("get Enreprise:" + e);
-//	}
+		//test pour ajout Dep
+			Departement d=new Departement("Informatique");
+			entrepSrevice.ajouterDepartement(d);
+			
+			assertNotNull(entrepSrevice.ajouterDepartement(d));
+	}
 	
-//	@Test(timeout = 5000)
-//	public void affecterDepartementAEntrTest(){
-//	
-//        entrepSrevice.affecterDepartementAEntreprise(1,1);
-//		
-//		
-//	}
+	@Test(timeout = 5000)
+	public void retriveEntrTest(){
 	
+		//test pour récuper  entreprise
 	
-//	@Test(timeout = 5000)
-//	public void getAllDepartementsNamesByEntrTest(){
-//	List<String> lnoms=entrepSrevice.getAllDepartementsNamesByEntreprise(1);
-//	
-//	assertThat(lnoms).size().isGreaterThan(0);
-//	}
-//	
+		Entreprise e=entrepSrevice.getEntrepriseById(2);
+			
+			assertNotNull(e.getName());
+			l.info("get Enreprise:" + e);
+	}
+	
+	@Test(timeout = 5000)
+	public void affecterDepartementAEntrTest(){
+	
+        entrepSrevice.affecterDepartementAEntreprise(1,1);
+		
+		
+	}
 	
 	
-//	@Test(timeout = 5000)
-//	public void delteEntreTest(){
-//		entrepSrevice.deleteEntrepriseById(1);
-//		
-//		assertNull(entrepSrevice.getEntrepriseById(1));
-//	}
+	@Test(timeout = 5000)
+	public void getAllDepartementsNamesByEntrTest(){
+	List<String> lnoms=entrepSrevice.getAllDepartementsNamesByEntreprise(1);
 	
-//	@Test(timeout = 5000)
-//	public void delteDepTest(){
-//		entrepSrevice.deleteDepartementById(1);
-//		
-//		
-//	}
+	assertThat(lnoms).size().isGreaterThan(0);
+	}
+	
+	
+	
+	@Test(timeout = 5000)
+	public void delteEntreTest(){
+		entrepSrevice.deleteEntrepriseById(1);
+		
+		assertNull(entrepSrevice.getEntrepriseById(1));
+	}
+	
+	@Test(timeout = 5000)
+	public void delteDepTest(){
+		entrepSrevice.deleteDepartementById(1);
+		
+		
+	}
 	
 
 }
