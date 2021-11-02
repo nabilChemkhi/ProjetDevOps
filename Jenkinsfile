@@ -21,10 +21,14 @@ pipeline {
         }
 		post{
 		success{
-		emailext body: 'build success', subjevt:'Jenkins', to:'nabil.chemkhi@esprit.tn'
+		emailext body: 'build success',
+        subject: 'Jenkins',
+        to: 'nabil.chemkhi@esprit.tn'
 		}
 		failure{
-		emailext body: 'build success', subjevt:'Jenkins', to:'nabil.chemkhi@esprit.tn'
+		emailext body: 'build failure',
+        subject: 'Jenkins',
+        to: 'nabil.chemkhi@esprit.tn'
 		}
 		}
     }
