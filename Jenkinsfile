@@ -19,6 +19,7 @@ pipeline {
 				echo'test'
             }
         }
+		}
 		post{
 		success{
 		emailext body: 'build success',
@@ -30,6 +31,6 @@ pipeline {
         subject: 'Jenkins',
         to: 'nabil.chemkhi@esprit.tn'
 		}
-		}
+		
     }
 }
