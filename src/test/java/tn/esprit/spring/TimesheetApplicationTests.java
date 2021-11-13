@@ -18,7 +18,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Departement;
+import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.entities.Role;
+import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 
 import org.springframework.boot.test.context.SpringBootTest;
@@ -50,7 +53,7 @@ public class TimesheetApplicationTests {
 			assertNotNull(entrepSrevice.ajouterEntreprise(e));
 	}
 	
-	
+	/*
 	@Test(timeout = 5000)
 	public void ajoutDepTest(){
 	
@@ -104,5 +107,17 @@ public class TimesheetApplicationTests {
 //		
 //	}
 	
-
+*/
+	/**--------------Test Employe ---------------**/
+/*	@Autowired
+	 IEmployeService employeservice;
+	@Test(timeout = 5000)
+	public void ajouterEmployeTest(){
+	
+		//test pour ajout entreprise
+			Employe e=new Employe("benour","amin","mohamedamine.benour@esprit.tn",true,Role.ADMINISTRATEUR);
+			employeservice.ajouterEmploye(e);
+			
+			//assertNotNull(employeservice.ajouterEmploye(e));
+	}*/
 }

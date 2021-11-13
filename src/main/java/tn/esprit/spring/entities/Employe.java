@@ -64,6 +64,12 @@ public class Employe implements Serializable {
 		super();
 	}
 	
+	
+	
+	
+
+
+
 	public Employe(String nom, String prenom, String email, boolean isActif, Role role) {
 		this.nom = nom;
 		this.prenom = prenom;
