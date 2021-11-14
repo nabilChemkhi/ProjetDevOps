@@ -53,7 +53,7 @@ public class TimesheetApplicationTests {
 			assertNotNull(entrepSrevice.ajouterEntreprise(e));
 	}
 	
-	/*
+	
 	@Test(timeout = 5000)
 	public void ajoutDepTest(){
 	
@@ -83,6 +83,18 @@ public class TimesheetApplicationTests {
 		
 	}
 	
+	@Autowired
+	 IEmployeService employeservice;
+	@Test(timeout = 5000)
+	public void ajouterEmployeTest(){
+	
+		//test pour ajout entreprise
+			Employe e=new Employe("benour","amin","mohamedamine.benour@esprit.tn",true,Role.ADMINISTRATEUR);
+			employeservice.ajouterEmploye(e);
+			
+			assertNotNull(employeservice.ajouterEmploye(e));
+	}
+	
 	
 //	@Test(timeout = 5000)
 //	public void getAllDepartementsNamesByEntrTest(){
@@ -107,17 +119,5 @@ public class TimesheetApplicationTests {
 //		
 //	}
 	
-*/
-	/**--------------Test Employe ---------------**/
-/*	@Autowired
-	 IEmployeService employeservice;
-	@Test(timeout = 5000)
-	public void ajouterEmployeTest(){
-	
-		//test pour ajout entreprise
-			Employe e=new Employe("benour","amin","mohamedamine.benour@esprit.tn",true,Role.ADMINISTRATEUR);
-			employeservice.ajouterEmploye(e);
-			
-			//assertNotNull(employeservice.ajouterEmploye(e));
-	}*/
+
 }
