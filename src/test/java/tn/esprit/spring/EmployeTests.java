@@ -32,16 +32,24 @@ public class EmployeTests {
 	 IEmployeService employeservice;
 	@Test(timeout = 5000)
 	public void ajouterEmployeTest(){
-	
+		try {
+			l.debug("Tester l'ajout d'un Employe");
 		
 			Employe e=new Employe("benour","amin","mohamedamine.benour@esprit.tn",true,Role.ADMINISTRATEUR);
 			employeservice.ajouterEmploye(e);
 			
 			assertNotNull(employeservice.ajouterEmploye(e));
+			
+			l.info("Employe ajouté avec succés");
+		}
+		catch (Exception e)
+		{ l.error(()->"Erreur dans ajouterEmployeTest() : " + e); }
 	}
 	
 	@Test(timeout = 5000)
 	public void ajouterContratTest() throws ParseException{
+		try {
+			l.debug("Tester l'ajout d'un Contrat");
 	
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date d = dateFormat.parse("2015-03-23");
@@ -49,6 +57,23 @@ public class EmployeTests {
 			employeservice.ajouterContrat(e);
 			
 			assertNotNull(employeservice.ajouterContrat(e));
+			l.info("Contrat ajouté avec succés");
+		}
+		catch (Exception e)
+		{ l.error(()->"Erreur dans ajouterContratTest() : " + e); }
+	}
+	
+	@Test
+	public void testaffecterContratAEmploye()
+	{
+		try {
+			l.info("Tester l'affectation d'un contrat a employe");
+			employeservice.affecterContratAEmploye(8, 1);
+			l.info("affectation employe/contrat avec succés");
+			
+		}
+		catch (Exception e)
+		{ l.error(()->"Erreur dans testaffecterContratAEmploye() : " + e); }
 	}
 	
 

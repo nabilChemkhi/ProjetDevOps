@@ -3,6 +3,7 @@ package tn.esprit.spring.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,27 +38,36 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
-		Employe employe = employeRepository.findById(employeId).get();
-		employe.setEmail(email);
-		employeRepository.save(employe);
+		Optional<Employe> employe = employeRepository.findById(employeId);
+		if(employe.isPresent()) {
+			employe.get().setEmail(email);
+			employeRepository.save(employe.get());
+		}
+		
 
 	}
 
 	@Transactional	
 	public void affecterEmployeADepartement(int employeId, int depId) {
-		Departement depManagedEntity = deptRepoistory.findById(depId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
+		Optional<Departement> depManagedEntity = deptRepoistory.findById(depId);
+		Optional<Employe> employeManagedEntity = employeRepository.findById(employeId);
 
-		if(depManagedEntity.getEmployes() == null){
+		if(depManagedEntity.isPresent() && employeManagedEntity.isPresent())
+		{
+			if(depManagedEntity.get().getEmployes() == null){
 
-			List<Employe> employes = new ArrayList<>();
-			employes.add(employeManagedEntity);
-			depManagedEntity.setEmployes(employes);
-		}else{
+				List<Employe> employes = new ArrayList<>();
+				employes.add(employeManagedEntity.get());
+				depManagedEntity.get().setEmployes(employes);
+			}else{
 
-			depManagedEntity.getEmployes().add(employeManagedEntity);
+				depManagedEntity.get().getEmployes().add(employeManagedEntity.get());
+			}
 
+			// à ajouter? 
+			deptRepoistory.save(depManagedEntity.get()); 
 		}
+		
 
 	}
 	@Transactional
