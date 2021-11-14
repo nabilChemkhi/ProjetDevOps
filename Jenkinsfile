@@ -36,7 +36,7 @@ pipeline {
 				bat "mvn deploy";
             }
 			}
-		}
+		
 		stage('Building Docker Image'){
 				steps{
 					script{
