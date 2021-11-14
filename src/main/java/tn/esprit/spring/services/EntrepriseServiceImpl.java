@@ -2,6 +2,7 @@ package tn.esprit.spring.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,24 +32,19 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 		return dep.getId();
 	}
 	
+
 	public void affecterDepartementAEntreprise(int depId, int entrepriseId) {
 		//Le bout Master de cette relation N:1 est departement  
 				//donc il faut rajouter l'entreprise a departement 
 				// ==> c'est l'objet departement(le master) qui va mettre a jour l'association
 				//Rappel : la classe qui contient mappedBy represente le bout Slave
 				//Rappel : Dans une relation oneToMany le mappedBy doit etre du cote one.
-				Entreprise entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId).orElse(null);
-				Departement depManagedEntity = deptRepoistory.findById(depId).orElse(null);
-			try {
-				depManagedEntity.setEntreprise(entrepriseManagedEntity);
-				deptRepoistory.save(depManagedEntity);
-			
-			} catch (Exception e) {
-				// TODO: handle exception
-				
-			  
-			}	
-				
+				Optional<Entreprise> entrepriseManagedEntity = entrepriseRepoistory.findById(entrepriseId);
+				Optional<Departement> depManagedEntity = deptRepoistory.findById(depId);
+				if (entrepriseManagedEntity.isPresent() && depManagedEntity.isPresent()) {
+					depManagedEntity.get().setEntreprise(entrepriseManagedEntity.get());
+					deptRepoistory.save(depManagedEntity.get());
+				}
 				
 		
 	}
