@@ -1,5 +1,11 @@
 pipeline {
     agent any 
+    environment { 
+        registry = "benour/timesheet" 
+		registryCredential = 'dockerHub'
+        dockerImage = '' 
+       
+    }
     stages {
         stage('Checkout GIT') { 
             steps {
@@ -31,6 +37,22 @@ pipeline {
             }
 			}
 		}
+		stage('Building Docker Image'){
+				steps{
+					script{
+						dockerImage = docker.build registry + ":$BUILD_NUMBER"
+					}
+				}				
+			}
+
+			stage('Pushing Docker Image'){
+				steps{
+					script{
+						docker.withRegistry( '', registryCredential ) 
+                        {dockerImage.push()}
+					}
+				}
+			}
 		post{
 		        always {
 
