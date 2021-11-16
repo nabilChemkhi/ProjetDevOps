@@ -1,4 +1,11 @@
 pipeline {
+
+environment
+{
+registry = "liban11/myapp1"
+registryCredential= 'dockerHub'
+dockerImage = ''
+}
     agent any 
     stages {
         stage('Checkout GIT') { 
