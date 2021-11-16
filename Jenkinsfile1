@@ -1,5 +1,6 @@
 pipeline {
 
+
 environment
 {
 registry = "liban11/myapp1"
@@ -55,6 +56,8 @@ dockerImage = ''
 		success{
 		emailext body: 'build success', subject: 'Jenkins', to: 'nabil.chemkhi@esprit.tn'
 		}
+		
+		
 		failure{
 		emailext body: 'build failure', subject: 'Jenkins', to: 'nabil.chemkhi@esprit.tn'
 		}
